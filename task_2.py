@@ -11,7 +11,7 @@ class HyperLogLog:
         self.m = 1 << p
         self.registers = [0] * self.m
         self.alpha = self._get_alpha()
-        self.small_range_correction = 5 * self.m / 2  # Поріг для малих значень
+        self.small_range_correction = 5 * self.m / 2
 
     def _get_alpha(self):
         if self.p <= 16:
@@ -42,7 +42,7 @@ class HyperLogLog:
         return E
 
 
-class UniqueCounter:
+class UniquesCounter:
     def __init__(self):
         self._uniques = set()
 
@@ -67,7 +67,7 @@ def estimate_cardinality(counter):
 
 
 hll = HyperLogLog(p=16)
-uc = UniqueCounter()
+uc = UniquesCounter()
 
 hll_start = timeit.default_timer()
 hll_estimation = estimate_cardinality(hll)
