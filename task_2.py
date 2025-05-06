@@ -77,17 +77,6 @@ uc_start = timeit.default_timer()
 uc_estimation = estimate_cardinality(uc)
 uc_time = timeit.default_timer() - uc_start
 
-results = {
-    'Точний підрахунок': {
-        'Унікальні елементи': uc_estimation,
-        'Час виконання (сек.)': uc_time
-    },
-    'HyperLogLog': {
-        'Унікальні елементи': hll_estimation,
-        'Час виконання (сек.)': hll_time
-    }
-}
-
 table = tabulate(
     {
         '': ['Унікальні елементи', 'Час виконання (сек.)'],
@@ -97,4 +86,5 @@ table = tabulate(
     headers="keys", tablefmt="simple_grid"
 )
 
+print('Результати порівняння:')
 print(table)
